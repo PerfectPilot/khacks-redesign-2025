@@ -7,7 +7,7 @@ import { NavBar } from "@/components/nav-bar"
 
 export default function Home() {
   const [text, setText] = useState("")
-  const fullText = ">_ ~/kleinhacks $ Welcome to KleinHacks 2025 _"
+  const fullText = ">_ ~/kleinhacks $ Welcome to KleinHacks 2025!"
 
   useEffect(() => {
     let currentIndex = 0
@@ -61,19 +61,20 @@ export default function Home() {
           <div className="w-full max-w-4xl">
             <div className="overflow-hidden rounded-2xl border border-gray-700 bg-black/30 backdrop-blur-xl">
               {/* Terminal Header */}
-              <div className="flex items-center gap-2 border-b border-gray-700 bg-gray-900/50 px-6 py-4">
-                <div className="flex gap-3">
+              <div className="relative flex items-center border-b border-gray-700 bg-gray-900/50 px-6 py-4">
+                <div className="absolute left-6 flex gap-3">
                   <div className="h-3.5 w-3.5 rounded-full bg-red-500" />
                   <div className="h-3.5 w-3.5 rounded-full bg-yellow-500" />
                   <div className="h-3.5 w-3.5 rounded-full bg-green-500" />
                 </div>
-                <div className="flex-1 text-center">
-                  <p className="text-sm text-gray-400">kleinhacks_terminal</p>
+                <div className="flex-1">
+                  <p className="text-center text-sm text-gray-400">kleinhacks_terminal</p>
                 </div>
               </div>
 
               {/* Terminal Content */}
-              <div className="flex min-h-[400px] flex-col items-center justify-center space-y-16 p-8">
+              <div className="flex min-h-[400px] flex-col items-center justify-between p-8">
+                <div />
                 <div className="text-center">
                   <span className="font-mono text-xl text-green-400">{text}</span>
                   <span className="animate-pulse text-green-400">|</span>
