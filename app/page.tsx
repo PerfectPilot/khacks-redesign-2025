@@ -7,9 +7,13 @@ import { NavBar } from "@/components/nav-bar"
 
 export default function Home() {
   const [text, setText] = useState("")
+  const [showButtons, setShowButtons] = useState(false)
   const fullText = ">_ ~/kleinhacks $ Welcome to KleinHacks 2025!"
 
   useEffect(() => {
+    // Total delay = typing time (characters × 50ms) + extra pause (500ms)
+    const totalDelay = fullText.length * 50 + 5
+
     let currentIndex = 0
     const interval = setInterval(() => {
       if (currentIndex <= fullText.length) {
@@ -20,7 +24,15 @@ export default function Home() {
       }
     }, 50)
 
-    return () => clearInterval(interval)
+    // Set a fixed timeout for showing buttons
+    const buttonTimer = setTimeout(() => {
+      setShowButtons(true)
+    }, totalDelay)
+
+    return () => {
+      clearInterval(interval)
+      clearTimeout(buttonTimer)
+    }
   }, [])
 
   return (
@@ -80,7 +92,10 @@ export default function Home() {
                   <span className="animate-pulse text-green-400">|</span>
                 </div>
 
-                <div className="flex w-full max-w-[280px] flex-col items-center gap-4">
+                <div 
+                  className={`flex w-full max-w-[280px] flex-col items-center gap-4 transition-all duration-1000
+                    ${showButtons ? 'translate-y-0 opacity-100 visible' : 'translate-y-4 opacity-0 invisible'}`}
+                >
                   <Button
                     size="lg"
                     className="w-full rounded-2xl bg-gradient-to-r from-[#3557B0] to-[#d44d2e] px-8 py-6 text-lg hover:from-[#3557B0]/90 hover:to-[#d44d2e]/90"
