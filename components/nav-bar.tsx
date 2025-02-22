@@ -7,10 +7,10 @@ export function NavBar() {
   const [activeItem, setActiveItem] = useState("home")
 
   const navItems = [
-    { name: "Home", href: "#" },
-    { name: "Sponsors", href: "#sponsors" },
-    { name: "FAQ", href: "#faq" },
-    { name: "Contact Us", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "Sponsors", href: "/sponsors" },
+    { name: "FAQ", href: "/faq" },
+    { name: "Contact Us", href: "/contact" },
   ]
 
   return (
