@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { NavBar } from "@/components/nav-bar"
@@ -9,6 +9,7 @@ export default function Home() {
   const [text, setText] = useState("")
   const [showButtons, setShowButtons] = useState(false)
   const fullText = ">_ ~/kleinhacks $ Welcome to KleinHacks 2025!"
+  const infoSectionRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     // Total delay = typing time (characters × 50ms) + extra pause (500ms)
@@ -35,8 +36,12 @@ export default function Home() {
     }
   }, [])
 
+  const scrollToInfo = () => {
+    infoSectionRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
-    <main className="relative min-h-screen overflow-hidden">
+    <main className="relative min-h-screen overflow-x-hidden">
       {/* Background Image */}
       <div
         className="absolute inset-0 z-0"
@@ -106,6 +111,7 @@ export default function Home() {
                     size="lg"
                     variant="outline"
                     className="w-full rounded-2xl border-gray-600 px-8 py-3 text-base text-white hover:bg-gray-800"
+                    onClick={scrollToInfo}
                   >
                     Learn More
                   </Button>
@@ -114,6 +120,52 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* Info Section */}
+        <div 
+          ref={infoSectionRef} 
+          className="container mx-auto px-4 py-32"
+        >
+          <div className="grid gap-8 md:grid-cols-2">
+            {/* Video Side */}
+            <div className="group overflow-hidden rounded-2xl border border-gray-700/50 bg-black/30 p-6 backdrop-blur-xl transition-all hover:bg-black/40">
+              <video 
+                className="w-full rounded-lg shadow-2xl"
+                controls
+                autoPlay
+                muted
+                loop
+                playsInline
+                src="https://video.wixstatic.com/video/5a14c2_f05241a393014869bc9a5abf04c599b7/1080p/mp4/file.mp4"
+              />
+            </div>
+
+            {/* Info Side */}
+            <div className="flex flex-col rounded-2xl border border-gray-700/50 bg-black/30 p-8 backdrop-blur-xl transition-all hover:bg-black/40">
+              <h2 className="text-center text-3xl font-bold text-white">Event Details</h2>
+              <div className="flex flex-1 flex-col items-center justify-center space-y-4">
+                <p className="text-center text-xl text-gray-200">
+                  <span className="block font-semibold text-gray-400">Date</span>
+                  February 21, 2026
+                </p>
+                <p className="text-center text-xl text-gray-200">
+                  <span className="block font-semibold text-gray-400">Location</span>
+                  Klein Cain High School <br></br> <br></br> 10201 Spring Cypress Rd Klein, TX 77070 United States
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <footer className="container mx-auto px-4 py-8">
+          <p className="text-center text-sm text-gray-400">
+            Designed and Programmed by:{" "}
+            <span className="font-medium text-gray-300">
+              Tanush Solai, Mehdi Benseddik
+            </span>
+          </p>
+        </footer>
       </div>
     </main>
   )
