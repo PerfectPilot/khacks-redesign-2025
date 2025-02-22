@@ -103,14 +103,14 @@ export default function Home() {
                 >
                   <Button
                     size="lg"
-                    className="w-full rounded-2xl bg-gradient-to-r from-[#3557B0] to-[#d44d2e] px-8 py-6 text-lg hover:from-[#3557B0]/90 hover:to-[#d44d2e]/90"
+                    className="w-full rounded-full bg-gradient-to-r from-[#3557B0]/60 to-[#d44d2e]/60 px-8 py-6 text-lg hover:from-[#3557B0] hover:to-[#d44d2e]"
                   >
                     Register Now
                   </Button>
                   <Button
                     size="lg"
                     variant="outline"
-                    className="w-full rounded-2xl border-gray-600 px-8 py-3 text-base text-white hover:bg-gray-800"
+                    className="w-full rounded-full border-gray-600 px-8 py-3 text-base text-white hover:bg-gray-800"
                     onClick={scrollToInfo}
                   >
                     Learn More
