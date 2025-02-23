@@ -1,28 +1,18 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { NavBar } from "@/components/nav-bar"
 
 export default function SponsorsPage() {
-  const [text, setText] = useState("")
-  const [showButtons, setShowButtons] = useState(false)
-  const fullText = ">_ ~/kleinhacks $ Welcome to KleinHacks 2025!"
-  const infoSectionRef = useRef<HTMLDivElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    let currentIndex = 0
-    const interval = setInterval(() => {
-      if (currentIndex <= fullText.length) {
-        setText(fullText.slice(0, currentIndex))
-        currentIndex++
-      } else {
-        clearInterval(interval)
-      }
-    }, 50)
-
-    return () => clearInterval(interval)
+    setIsVisible(true)
+    return () => {
+      setIsVisible(false)
+    }
   }, [])
 
   return (
@@ -39,9 +29,8 @@ export default function SponsorsPage() {
         }}
       />
 
-      {/* Content */}
+      {/* Static Header with Logo and Nav */}
       <div className="relative z-10">
-        {/* Header with Logo and Nav */}
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center gap-8 py-4">
             <div className="w-[180px]">
@@ -57,7 +46,10 @@ export default function SponsorsPage() {
             <NavBar />
           </div>
         </div>
+      </div>
 
+      {/* Fading Content */}
+      <div className={`relative z-10 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         {/* Centered Terminal Window */}
         <div className="container mx-auto flex min-h-[calc(100vh-200px)] items-center justify-center px-4">
           <div className="w-full max-w-4xl">
@@ -70,7 +62,7 @@ export default function SponsorsPage() {
                   <div className="h-3.5 w-3.5 rounded-full bg-green-500" />
                 </div>
                 <div className="flex-1">
-                  <p className="text-center text-sm text-gray-400">kleinhacks_terminal</p>
+                  <p className="text-center text-sm text-gray-400">our_sponsors</p>
                 </div>
               </div>
 
@@ -78,28 +70,7 @@ export default function SponsorsPage() {
               <div className="flex min-h-[400px] flex-col items-center justify-between p-8">
                 <div />
                 <div className="text-center">
-                  <span className="font-mono text-xl text-green-400">{text}</span>
-                  <span className="animate-pulse text-green-400">|</span>
-                </div>
-
-                <div 
-                  className={`flex w-full max-w-[280px] flex-col items-center gap-4 transition-all duration-1000
-                    ${showButtons ? 'translate-y-0 opacity-100 visible' : 'translate-y-4 opacity-0 invisible'}`}
-                >
-                  <Button
-                    size="lg"
-                    className="w-full rounded-full bg-gradient-to-r from-[#3557B0]/60 to-[#d44d2e]/60 px-8 py-6 text-lg hover:from-[#3557B0] hover:to-[#d44d2e]"
-                  >
-                    Register Now
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="w-full rounded-full border-gray-600 px-8 py-3 text-base text-white hover:bg-gray-800"
-                    onClick={() => {}}
-                  >
-                    Learn More
-                  </Button>
+                  {/* Removed the text and animation */}
                 </div>
               </div>
             </div>
