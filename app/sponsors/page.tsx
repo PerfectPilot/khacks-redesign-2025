@@ -41,6 +41,14 @@ export default function SponsorsPage() {
     }
   }, [])
 
+  const handlePrevImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
   return (
     <main className="relative min-h-screen overflow-hidden">
       {/* Background Image */}
@@ -93,6 +101,12 @@ export default function SponsorsPage() {
 
             {/* Image Carousel */}
             <div className="relative h-[300px] mx-auto max-w-[80%]">
+              <button 
+                onClick={handlePrevImage} 
+                className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black/30 backdrop-blur-md border border-gray-700 rounded-full p-2 shadow-lg text-white font-bold"
+              >
+                &#x2190;
+              </button>
               <Image
                 src={images[currentImageIndex]}
                 alt={`Sponsor Image ${currentImageIndex + 1}`}
@@ -100,6 +114,12 @@ export default function SponsorsPage() {
                 objectFit="contain"
                 className="rounded-t-2xl"
               />
+              <button 
+                onClick={handleNextImage} 
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black/30 backdrop-blur-md border border-gray-700 rounded-full p-2 shadow-lg text-white font-bold"
+              >
+                &#x2192;
+              </button>
               {/* Progress Dots */}
               <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
                 {images.map((_, index) => (
