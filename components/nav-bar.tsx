@@ -1,9 +1,11 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
+import { usePathname } from 'next/navigation'
 
 export function NavBar() {
+  const pathname = usePathname();
   const [activeItem, setActiveItem] = useState("home")
 
   const navItems = [
@@ -12,6 +14,13 @@ export function NavBar() {
     { name: "FAQ", href: "/faq" },
     { name: "Contact Us", href: "/contact" },
   ]
+
+  useEffect(() => {
+    const currentItem = navItems.find(item => item.href === pathname);
+    if (currentItem) {
+      setActiveItem(currentItem.name.toLowerCase());
+    }
+  }, [pathname, navItems]);
 
   return (
     <nav className="rounded-full border border-gray-700/50 bg-gray-900/30 px-8 py-2.5 backdrop-blur-md">
