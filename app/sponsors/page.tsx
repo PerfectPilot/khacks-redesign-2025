@@ -33,7 +33,7 @@ export default function SponsorsPage() {
     setIsVisible(true)
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
-    }, 3000) // Change image every 3 seconds
+    }, 3500)
 
     return () => {
       clearInterval(interval)
@@ -42,12 +42,12 @@ export default function SponsorsPage() {
   }, [])
 
   const handlePrevImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-  };
+    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length)
+  }
 
   const handleNextImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
+  }
 
   return (
     <main className="relative min-h-screen overflow-hidden">
@@ -102,32 +102,48 @@ export default function SponsorsPage() {
             {/* Terminal Content (matches homepage spacing and layout) */}
             <div className="flex min-h-[400px] flex-col items-center justify-center p-8">
               {/* Image Carousel */}
-              <div className="relative h-[300px] w-full max-w-[80%]">
+              <div className="relative mx-auto h-[320px] w-full max-w-[85%] overflow-hidden rounded-lg md:h-[380px] lg:h-[420px]">
+                {/* Slides stacked and cross-faded */}
+                {images.map((src, index) => (
+                  <div
+                    key={src}
+                    className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
+                  >
+                    <Image
+                      src={src}
+                      alt={`Sponsor ${index + 1}`}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 80vw, 800px"
+                      priority={index === 0}
+                    />
+                  </div>
+                ))}
+
+                {/* Controls */}
                 <button
+                  aria-label="Previous image"
                   onClick={handlePrevImage}
-                  className="absolute left-0 top-1/2 -translate-y-1/2 transform rounded-full border border-gray-700 bg-black/30 p-2 font-bold text-white shadow-lg backdrop-blur-md"
+                  className="absolute left-3 top-1/2 z-10 -translate-y-1/2 transform rounded-full border border-white/20 bg-black/40 p-3 text-xl text-white shadow-lg backdrop-blur-md transition hover:scale-105 hover:bg-black/60"
                 >
-                  &#x2190;
+                  ‹
                 </button>
-                <Image
-                  src={images[currentImageIndex]}
-                  alt={`Sponsor Image ${currentImageIndex + 1}`}
-                  layout="fill"
-                  objectFit="contain"
-                  className="rounded-md"
-                />
                 <button
+                  aria-label="Next image"
                   onClick={handleNextImage}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 transform rounded-full border border-gray-700 bg-black/30 p-2 font-bold text-white shadow-lg backdrop-blur-md"
+                  className="absolute right-3 top-1/2 z-10 -translate-y-1/2 transform rounded-full border border-white/20 bg-black/40 p-3 text-xl text-white shadow-lg backdrop-blur-md transition hover:scale-105 hover:bg-black/60"
                 >
-                  &#x2192;
+                  ›
                 </button>
+
                 {/* Progress Dots */}
-                <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 transform space-x-2">
+                <div className="pointer-events-auto absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 transform items-center gap-2">
                   {images.map((_, index) => (
-                    <div
+                    <button
                       key={index}
-                      className={`h-2 w-2 rounded-full ${currentImageIndex === index ? 'bg-blue-500' : 'bg-gray-300'}`}
+                      aria-label={`Go to image ${index + 1}`}
+                      onClick={() => setCurrentImageIndex(index)}
+                      className={`h-2.5 w-2.5 rounded-full transition ${currentImageIndex === index ? 'bg-blue-500' : 'bg-white/50 hover:bg-white/70'}`}
                     />
                   ))}
                 </div>
