@@ -86,7 +86,7 @@ export default function SponsorsPage() {
       <div className={`relative z-10 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         {/* Terminal Window with Image Carousel */}
         <div className="container mx-auto flex min-h-[calc(100vh-200px)] items-center justify-center px-4">
-          <div className="w-full max-w-4xl overflow-hidden rounded-2xl bg-black/30 backdrop-blur-xl p-4">
+          <div className="w-full max-w-4xl overflow-hidden rounded-2xl border border-gray-700 bg-black/30 backdrop-blur-xl">
             {/* Terminal Header */}
             <div className="relative flex items-center border-b border-gray-700 bg-gray-900/50 px-6 py-4">
               <div className="absolute left-6 flex gap-3">
@@ -99,35 +99,38 @@ export default function SponsorsPage() {
               </div>
             </div>
 
-            {/* Image Carousel */}
-            <div className="relative h-[300px] mx-auto max-w-[80%]">
-              <button 
-                onClick={handlePrevImage} 
-                className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black/30 backdrop-blur-md border border-gray-700 rounded-full p-2 shadow-lg text-white font-bold"
-              >
-                &#x2190;
-              </button>
-              <Image
-                src={images[currentImageIndex]}
-                alt={`Sponsor Image ${currentImageIndex + 1}`}
-                layout="fill"
-                objectFit="contain"
-                className="rounded-t-2xl"
-              />
-              <button 
-                onClick={handleNextImage} 
-                className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black/30 backdrop-blur-md border border-gray-700 rounded-full p-2 shadow-lg text-white font-bold"
-              >
-                &#x2192;
-              </button>
-              {/* Progress Dots */}
-              <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                {images.map((_, index) => (
-                  <div
-                    key={index}
-                    className={`h-2 w-2 rounded-full ${currentImageIndex === index ? 'bg-blue-500' : 'bg-gray-300'}`}
-                  />
-                ))}
+            {/* Terminal Content (matches homepage spacing and layout) */}
+            <div className="flex min-h-[400px] flex-col items-center justify-center p-8">
+              {/* Image Carousel */}
+              <div className="relative h-[300px] w-full max-w-[80%]">
+                <button
+                  onClick={handlePrevImage}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 transform rounded-full border border-gray-700 bg-black/30 p-2 font-bold text-white shadow-lg backdrop-blur-md"
+                >
+                  &#x2190;
+                </button>
+                <Image
+                  src={images[currentImageIndex]}
+                  alt={`Sponsor Image ${currentImageIndex + 1}`}
+                  layout="fill"
+                  objectFit="contain"
+                  className="rounded-md"
+                />
+                <button
+                  onClick={handleNextImage}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 transform rounded-full border border-gray-700 bg-black/30 p-2 font-bold text-white shadow-lg backdrop-blur-md"
+                >
+                  &#x2192;
+                </button>
+                {/* Progress Dots */}
+                <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 transform space-x-2">
+                  {images.map((_, index) => (
+                    <div
+                      key={index}
+                      className={`h-2 w-2 rounded-full ${currentImageIndex === index ? 'bg-blue-500' : 'bg-gray-300'}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
