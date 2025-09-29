@@ -22,7 +22,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <button
-        className={`${base} rounded-full ${sizeClasses} ${variantClasses} ${className ?? ""}`}
+        className={`${base} rounded-2xl ${sizeClasses} ${variantClasses} ${className ?? ""}`}
         {...props}
         ref={ref}
       >

@@ -104,14 +104,14 @@ export default function Home() {
                   <Button
                     size="lg"
                     variant="outline-primary"
-                    className="w-full rounded-full px-8 py-6 text-lg"
+                    className="w-full rounded-2xl px-5 py-4 text-sm"
                   >
                     Register Now
                   </Button>
                   <Button
                     size="lg"
                     variant="outline"
-                    className="w-full rounded-full border-gray-600 px-8 py-3 text-base text-white hover:bg-gray-800"
+                    className="w-full rounded-2xl border-gray-600 px-5 py-2.5 text-sm text-white hover:bg-gray-800"
                     onClick={scrollToInfo}
                   >
                     Learn More
