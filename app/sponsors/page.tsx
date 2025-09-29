@@ -86,7 +86,7 @@ export default function SponsorsPage() {
       <div className={`relative z-10 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         {/* Terminal Window with Image Carousel */}
         <div className="container mx-auto flex min-h-[calc(100vh-200px)] items-center justify-center px-4">
-          <div className="w-full max-w-4xl overflow-hidden rounded-2xl border border-gray-700 bg-black/30 backdrop-blur-xl">
+          <div className="w-full max-w-4xl overflow-visible rounded-2xl border border-gray-700 bg-black/30 backdrop-blur-xl">
             {/* Terminal Header */}
             <div className="relative flex items-center border-b border-gray-700 bg-gray-900/50 px-6 py-4">
               <div className="absolute left-6 flex gap-3">
@@ -102,36 +102,38 @@ export default function SponsorsPage() {
             {/* Terminal Content (matches homepage spacing and layout) */}
             <div className="flex min-h-[400px] flex-col items-center justify-center p-8">
               {/* Image Carousel */}
-              <div className="relative mx-auto h-[320px] w-full max-w-[85%] overflow-hidden rounded-lg md:h-[380px] lg:h-[420px]">
+              <div className="relative mx-auto h-[320px] w-full max-w-[85%] overflow-visible rounded-lg md:h-[380px] lg:h-[420px]">
                 {/* Slides stacked and cross-faded */}
-                {images.map((src, index) => (
-                  <div
-                    key={src}
-                    className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
-                  >
-                    <Image
-                      src={src}
-                      alt={`Sponsor ${index + 1}`}
-                      fill
-                      className="object-contain"
-                      sizes="(max-width: 768px) 80vw, 800px"
-                      priority={index === 0}
-                    />
-                  </div>
-                ))}
+                <div className="absolute inset-0 overflow-hidden rounded-lg">
+                  {images.map((src, index) => (
+                    <div
+                      key={src}
+                      className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
+                    >
+                      <Image
+                        src={src}
+                        alt={`Sponsor ${index + 1}`}
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 768px) 80vw, 800px"
+                        priority={index === 0}
+                      />
+                    </div>
+                  ))}
+                </div>
 
                 {/* Controls */}
                 <button
                   aria-label="Previous image"
                   onClick={handlePrevImage}
-                  className="absolute left-3 top-1/2 z-10 -translate-y-1/2 transform rounded-full border border-white/20 bg-black/40 p-3 text-xl text-white shadow-lg backdrop-blur-md transition hover:scale-105 hover:bg-black/60"
+                  className="absolute left-[4px] sm:left-3 md:left-[-28px] lg:left-[-48px] top-1/2 z-50 -translate-y-1/2 transform rounded-full border border-white/20 bg-black/40 p-3 text-xl text-white shadow-lg backdrop-blur-md transition hover:scale-105 hover:bg-black/60"
                 >
                   ‹
                 </button>
                 <button
                   aria-label="Next image"
                   onClick={handleNextImage}
-                  className="absolute right-3 top-1/2 z-10 -translate-y-1/2 transform rounded-full border border-white/20 bg-black/40 p-3 text-xl text-white shadow-lg backdrop-blur-md transition hover:scale-105 hover:bg-black/60"
+                  className="absolute right-[4px] sm:right-3 md:right-[-28px] lg:right-[-48px] top-1/2 z-50 -translate-y-1/2 transform rounded-full border border-white/20 bg-black/40 p-3 text-xl text-white shadow-lg backdrop-blur-md transition hover:scale-105 hover:bg-black/60"
                 >
                   ›
                 </button>
