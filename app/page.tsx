@@ -103,7 +103,8 @@ export default function Home() {
                 >
                   <Button
                     size="lg"
-                    className="w-full rounded-full bg-gradient-to-r from-[#3557B0]/60 to-[#d44d2e]/60 px-8 py-6 text-lg hover:from-[#3557B0] hover:to-[#d44d2e]"
+                    variant="outline-primary"
+                    className="w-full rounded-full px-8 py-6 text-lg"
                   >
                     Register Now
                   </Button>
