@@ -134,11 +134,11 @@ export default function Home() {
           ref={infoSectionRef} 
           className="container mx-auto px-4 py-32"
         >
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="grid gap-8 md:grid-cols-3">
             {/* Video Side */}
-            <div className="group overflow-hidden rounded-2xl border border-gray-700/50 bg-black/30 p-6 backdrop-blur-xl transition-all hover:bg-black/40">
+            <div className="group md:col-span-2 overflow-hidden rounded-2xl border border-gray-700/50 bg-black/30 p-6 backdrop-blur-xl transition-all hover:bg-black/40 min-h-[360px] md:min-h-[440px] lg:min-h-[520px]">
               <video 
-                className="w-full rounded-lg shadow-2xl"
+                className="h-full w-full rounded-lg object-cover shadow-2xl"
                 controls
                 autoPlay
                 muted
@@ -149,7 +149,7 @@ export default function Home() {
             </div>
 
             {/* Info Side */}
-            <div className="flex flex-col rounded-2xl border border-gray-700/50 bg-black/30 p-8 backdrop-blur-xl transition-all hover:bg-black/40">
+            <div className="md:col-span-1 flex flex-col rounded-2xl border border-gray-700/50 bg-black/30 p-8 backdrop-blur-xl transition-all hover:bg-black/40 min-h-[360px] md:min-h-[440px] lg:min-h-[520px]">
               <h2 className="text-center text-3xl font-bold text-white">Event Details</h2>
               <div className="flex flex-1 flex-col items-center justify-center space-y-4">
                 <p className="text-center text-xl text-gray-200">
