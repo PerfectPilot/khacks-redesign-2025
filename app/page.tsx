@@ -101,13 +101,20 @@ export default function Home() {
                   className={`flex w-full max-w-[280px] flex-col items-center gap-4 transition-all duration-1000
                     ${showButtons ? 'translate-y-0 opacity-100 visible' : 'translate-y-4 opacity-0 invisible'}`}
                 >
-                  <Button
-                    size="lg"
-                    variant="outline-primary"
-                    className="w-full rounded-2xl px-5 py-4 text-sm"
+                  <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSdlDB2U7vB1SN-JkiOjv_eBb5S6hu5Xt-jK4p5B8H8lKYutsA/closedform"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full"
                   >
-                    Register Now
-                  </Button>
+                    <Button
+                      size="lg"
+                      variant="outline-primary"
+                      className="w-full rounded-2xl px-5 py-4 text-sm"
+                    >
+                      Register Now
+                    </Button>
+                  </a>
                   <Button
                     size="lg"
                     variant="outline"
