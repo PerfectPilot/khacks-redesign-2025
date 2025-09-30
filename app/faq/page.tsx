@@ -17,34 +17,34 @@ export default function FAQPage() {
   const leftColumnData: FAQItem[] = [
     {
       question: "What Is KleinHacks?",
-      answer: "KleinHacks is a student-led hackathon that brings together high school students from Klein ISD to collaborate, learn, and create innovative projects. It's a 24-hour event where participants work in teams to build software, hardware, or other tech solutions while competing for prizes and learning from workshops and mentors."
+      answer: "KleinHacks is a student-led hackathon that aims to inspire the next generation of innovators from around the Klein ISD area. High school students, business partners, and community members collaborate on projects with applications in technology and a variety of other fields. Each spring, students will be immersed in a 12-hour innovation challenge. Our event is completely free to all students."
+    },
+    {
+      question: "What is the schedule for the event?",
+      answer: "The KleinHacks 2025 Schedule will be posted soon! Check back closer to the event date for detailed timing and activities."
     },
     {
       question: "Who can attend?",
-      answer: "All current Klein ISD high school students are welcome to attend KleinHacks. This includes students from Klein High School, Klein Cain High School, Klein Oak High School, Klein Forest High School, and Klein Collins High School. No prior programming experience is required!"
+      answer: "All current Klein ISD high school students can attend our event. This includes students from Klein High School, Klein Cain High School, Klein Oak High School, Klein Forest High School, and Klein Collins High School."
     },
     {
-      question: "What are the challenges and how many can I do?",
-      answer: "Our challenges won't be announced until the day of the event, but typically include various categories like web development, mobile apps, hardware projects, data science, and more. You can work on as many challenges as you'd like, but most teams focus on one main project to create something truly impressive."
-    },
-    {
-      question: "How do teams work?",
-      answer: "Teams consist of a maximum of 4 people. You can form a team before the event or find teammates during the team formation session at the beginning of the hackathon. Working in teams allows you to combine different skills and create more ambitious projects than you could alone."
+      question: "Do I need to know how to code?",
+      answer: "Nope! KleinHacks is a great place to learn how to code, but we will have challenges that require no coding at all! As long as you have a passion for creating, the resources we provide you along with the mentors available will get you on the right path!"
     }
   ]
 
   const rightColumnData: FAQItem[] = [
     {
-      question: "What is the schedule for the event?",
-      answer: "The KleinHacks 2025 Schedule will be released closer to the event date. Generally, the event runs for 24 hours starting on February 21, 2026, with check-in beginning in the morning, opening ceremonies, workshops throughout the day, hacking time, and final presentations and awards ceremony."
-    },
-    {
-      question: "Do I need to know how to code?",
-      answer: "Nope! KleinHacks is a great place to learn programming and technology skills. We'll have workshops for beginners, mentors to help guide you, and resources to get you started. Many participants come with little to no coding experience and leave with new skills and confidence in technology."
+      question: "What are the challenges and how many can I do?",
+      answer: "Our challenges won't be announced until the day of the event! A team can only make one project, but it can apply to as many challenges as you want!"
     },
     {
       question: "How do prizes work?",
-      answer: "There are two types of prizes: category prizes for the best projects in specific areas (like Best Web App, Best Mobile App, etc.) and overall prizes for the top projects overall. Prizes include gift cards, tech gadgets, and other exciting rewards. All participants also receive swag and certificates of participation."
+      answer: "There are two types of prizes:\n\nSponsored Challenges: The prizes and amount of winning teams for sponsored challenges is up to the discretion of the sponsor.\n\nGeneral Track: There will be three winning teams in the general track. They will have the choice of one of the three Grand Prizes, subject to availability. 1st place will pick first, followed by 2nd, and then 3rd place."
+    },
+    {
+      question: "How do teams work?",
+      answer: "Teams consist of a maximum of three participants. Prizes are awarded to every member of the team individually. You don't need to have a team, but having friends makes it more fun! There will be a team formation event at KleinHacks for those who don't have one."
     }
   ]
 
@@ -62,6 +62,16 @@ export default function FAQPage() {
         ? prev.filter(item => item !== index)
         : [...prev, index]
     )
+  }
+
+  const collapseAll = () => {
+    setLeftOpenItems([])
+    setRightOpenItems([])
+  }
+
+  const showAll = () => {
+    setLeftOpenItems(leftColumnData.map((_, index) => index))
+    setRightOpenItems(rightColumnData.map((_, index) => index))
   }
 
   return (
@@ -116,10 +126,27 @@ export default function FAQPage() {
 
               {/* FAQ Content */}
               <div className="p-8">
-                {/* FAQ Title */}
-                <h1 className="text-center text-6xl font-bold text-white mb-12 tracking-wider">
-                  FAQ
-                </h1>
+                {/* FAQ Title and Controls */}
+                <div className="text-center mb-12">
+                  <h1 className="text-6xl font-bold text-white mb-6 tracking-wider">
+                    FAQ
+                  </h1>
+                  <div className="flex justify-center gap-4">
+                    <button
+                      onClick={showAll}
+                      className="text-sm text-blue-400 hover:text-blue-300 transition-colors cursor-pointer"
+                    >
+                      Show All
+                    </button>
+                    <span className="text-gray-500">|</span>
+                    <button
+                      onClick={collapseAll}
+                      className="text-sm text-blue-400 hover:text-blue-300 transition-colors cursor-pointer"
+                    >
+                      Collapse All
+                    </button>
+                  </div>
+                </div>
 
                 {/* FAQ Items */}
                 <div className="grid gap-6 md:grid-cols-2">
@@ -163,7 +190,7 @@ export default function FAQPage() {
                               : 'max-h-0 opacity-0'
                           }`}
                         >
-                          <p className="text-gray-300 leading-relaxed">
+                          <p className="text-gray-300 leading-relaxed whitespace-pre-line">
                             {item.answer}
                           </p>
                         </div>
@@ -211,7 +238,7 @@ export default function FAQPage() {
                               : 'max-h-0 opacity-0'
                           }`}
                         >
-                          <p className="text-gray-300 leading-relaxed">
+                          <p className="text-gray-300 leading-relaxed whitespace-pre-line">
                             {item.answer}
                           </p>
                         </div>
