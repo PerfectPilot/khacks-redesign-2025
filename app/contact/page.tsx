@@ -172,12 +172,12 @@ export default function ContactPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="p-4 bg-gray-800/30 border border-gray-600 rounded-lg">
                     <p className="text-sm text-gray-400 mb-2">Sponsor Contact</p>
-                    <p className="text-white font-mono text-sm">[Sponsor Email Placeholder]</p>
+                    <p className="text-white font-mono text-sm">kleinhacks@kleinisd.net</p>
                   </div>
                   <div className="p-4 bg-gray-800/30 border border-gray-600 rounded-lg">
                     <p className="text-sm text-gray-400 mb-2">Tech Support</p>
-                    <p className="text-white font-mono text-sm">[Tech Support Email 1 Placeholder]</p>
-                    <p className="text-white font-mono text-sm mt-2">[Tech Support Email 2 Placeholder]</p>
+                    <p className="text-white font-mono text-sm">tsol7130@students.kleinisd.net</p>
+                    <p className="text-white font-mono text-sm mt-2">mben8190@students.kleinisd.net</p>
                   </div>
                 </div>
               </div>
