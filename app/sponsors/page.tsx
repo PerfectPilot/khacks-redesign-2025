@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import { NavBar } from "@/components/nav-bar"
+import Link from "next/link"
 
 const images = [
   "/images/sponsor1.jpeg", 
@@ -67,16 +68,18 @@ export default function SponsorsPage() {
       <div className="relative z-10">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center gap-8 py-4">
-            <div className="w-[180px]">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-T9m6a1UnoYXj7OfJpF2fOIy429Phz5.png"
-                alt="KleinHacks Logo"
-                width={180}
-                height={45}
-                priority
-                className="h-auto w-full"
-              />
-            </div>
+            <Link href="/" aria-label="Home">
+              <div className="w-[180px]">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-T9m6a1UnoYXj7OfJpF2fOIy429Phz5.png"
+                  alt="KleinHacks Logo"
+                  width={180}
+                  height={45}
+                  priority
+                  className="h-auto w-full"
+                />
+              </div>
+            </Link>
             <NavBar />
           </div>
         </div>
