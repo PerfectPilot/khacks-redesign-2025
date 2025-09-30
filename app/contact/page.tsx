@@ -168,7 +168,7 @@ export default function ContactPage() {
 
               {/* Backup Emails Placeholder Section */}
               <div className="mt-12 pt-8 border-t border-gray-700">
-                <h3 className="text-lg font-semibold text-white mb-4">Backup Contact Emails</h3>
+                <h3 className="text-lg font-semibold text-white mb-4 text-center">Backup Contact Emails</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="p-4 bg-gray-800/30 border border-gray-600 rounded-lg">
                     <p className="text-sm text-gray-400 mb-2">Sponsor Contact</p>
