@@ -31,14 +31,14 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             {/* Replace the href values below with your real profile URLs */}
             <Link
-              href="#"
+              href="https://www.instagram.com/kleinisdhacks/"
               aria-label="Instagram"
               className="text-gray-300 transition-colors hover:text-pink-400"
             >
               <Instagram className="h-5 w-5" />
             </Link>
             <Link
-              href="#"
+              href="https://x.com/klein_hacks"
               aria-label="Twitter"
               className="text-gray-300 transition-colors hover:text-sky-400"
             >
@@ -49,7 +49,7 @@ export default function Footer() {
         {/* Credits below nav/social row */}
         <div className="mt-6 border-t border-gray-800/60 pt-4">
           <p className="text-center text-sm text-gray-200">
-            Designed and Programmed by: <span className="font-medium">Tanush Solai, Mehdi Benseddik</span>
+            Designed and Programmed by <span className="font-medium">Tanush Solai and Mehdi Benseddik</span>
           </p>
         </div>
       </div>
