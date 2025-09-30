@@ -50,7 +50,8 @@ export default function Home() {
             "url(https://hebbkx1anhila5yf.public.blob.vercel-storage.com/richard-horvath-_nWaeTF6qo0-unsplash.jpg-AMRNsw7JPQliDSHy9GNAEELhu9H3Fq.jpeg)",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          filter: "blur(10px) brightness(0.5)",
+          backgroundAttachment: "fixed",
+          filter: "blur(10px) brightness(0.55)",
         }}
       />
 
@@ -165,15 +166,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Footer */}
-        <footer className="container mx-auto px-4 py-8">
-          <p className="text-center text-sm text-gray-400">
-            Designed and Programmed by:{" "}
-            <span className="font-medium text-gray-300">
-              Tanush Solai, Mehdi Benseddik
-            </span>
-          </p>
-        </footer>
+        {/* Footer removed - handled globally */}
       </div>
     </main>
   )

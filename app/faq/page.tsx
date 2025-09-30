@@ -248,15 +248,7 @@ export default function FAQPage() {
           </div>
         </div>
 
-        {/* Footer */}
-        <footer className="container mx-auto px-4 py-8">
-          <p className="text-center text-sm text-gray-400">
-            Designed and Programmed by:{" "}
-            <span className="font-medium text-gray-300">
-              Tanush Solai, Mehdi Benseddik
-            </span>
-          </p>
-        </footer>
+        {/* Page-level footer removed; global footer is used */}
       </div>
     </main>
   )
