@@ -126,7 +126,7 @@ export default function SponsorsPage() {
                 <button
                   aria-label="Previous image"
                   onClick={handlePrevImage}
-                  className="group absolute left-[4px] sm:left-3 md:left-[-28px] lg:left-[-48px] top-1/2 z-50 -translate-y-1/2 transform rounded-full border border-white/20 bg-black/40 p-1 md:p-1.5 text-white/90 shadow-lg backdrop-blur-md transition-all duration-200 hover:scale-105 hover:bg-black/60 hover:text-white focus:outline-none"
+                  className="group absolute left-[4px] sm:left-3 md:left-[-48px] lg:left-[-68px] top-1/2 z-50 -translate-y-1/2 transform rounded-full border border-white/20 bg-black/40 p-1 md:p-1.5 text-white/90 shadow-lg backdrop-blur-md transition-all duration-200 hover:scale-105 hover:bg-black/60 hover:text-white focus:outline-none"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -143,7 +143,7 @@ export default function SponsorsPage() {
                 <button
                   aria-label="Next image"
                   onClick={handleNextImage}
-                  className="group absolute right-[4px] sm:right-3 md:right-[-28px] lg:right-[-48px] top-1/2 z-50 -translate-y-1/2 transform rounded-full border border-white/20 bg-black/40 p-1 md:p-1.5 text-white/90 shadow-lg backdrop-blur-md transition-all duration-200 hover:scale-105 hover:bg-black/60 hover:text-white focus:outline-none"
+                  className="group absolute right-[4px] sm:right-3 md:right-[-48px] lg:right-[-68px] top-1/2 z-50 -translate-y-1/2 transform rounded-full border border-white/20 bg-black/40 p-1 md:p-1.5 text-white/90 shadow-lg backdrop-blur-md transition-all duration-200 hover:scale-105 hover:bg-black/60 hover:text-white focus:outline-none"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
