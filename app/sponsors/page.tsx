@@ -126,16 +126,36 @@ export default function SponsorsPage() {
                 <button
                   aria-label="Previous image"
                   onClick={handlePrevImage}
-                  className="absolute left-[4px] sm:left-3 md:left-[-28px] lg:left-[-48px] top-1/2 z-50 -translate-y-1/2 transform rounded-full border border-white/20 bg-black/40 p-3 text-xl text-white shadow-lg backdrop-blur-md transition hover:scale-105 hover:bg-black/60"
+                  className="group absolute left-[4px] sm:left-3 md:left-[-28px] lg:left-[-48px] top-1/2 z-50 -translate-y-1/2 transform rounded-full border border-white/20 bg-black/40 p-1 md:p-1.5 text-white/90 shadow-lg backdrop-blur-md transition-all duration-200 hover:scale-105 hover:bg-black/60 hover:text-white focus:outline-none"
                 >
-                  ‹
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    className="h-8 w-8 md:h-10 md:w-10 stroke-current transition-transform duration-200 ease-out group-hover:-translate-x-1"
+                    fill="none"
+                    strokeWidth="3.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M15 5 L7 12 L15 19" />
+                  </svg>
                 </button>
                 <button
                   aria-label="Next image"
                   onClick={handleNextImage}
-                  className="absolute right-[4px] sm:right-3 md:right-[-28px] lg:right-[-48px] top-1/2 z-50 -translate-y-1/2 transform rounded-full border border-white/20 bg-black/40 p-3 text-xl text-white shadow-lg backdrop-blur-md transition hover:scale-105 hover:bg-black/60"
+                  className="group absolute right-[4px] sm:right-3 md:right-[-28px] lg:right-[-48px] top-1/2 z-50 -translate-y-1/2 transform rounded-full border border-white/20 bg-black/40 p-1 md:p-1.5 text-white/90 shadow-lg backdrop-blur-md transition-all duration-200 hover:scale-105 hover:bg-black/60 hover:text-white focus:outline-none"
                 >
-                  ›
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    className="h-8 w-8 md:h-10 md:w-10 stroke-current transition-transform duration-200 ease-out group-hover:translate-x-1"
+                    fill="none"
+                    strokeWidth="3.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M9 5 L17 12 L9 19" />
+                  </svg>
                 </button>
 
                 {/* Progress Dots */}
