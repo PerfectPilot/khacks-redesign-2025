@@ -98,7 +98,7 @@ export default function SponsorsPage() {
                 <div className="h-3.5 w-3.5 rounded-full bg-green-500" />
               </div>
               <div className="flex-1">
-                <p className="text-center text-sm text-gray-400">kleinhacks_terminal</p>
+                <p className="text-center text-sm text-gray-400">kleinhacks_sponsors</p>
               </div>
             </div>
 

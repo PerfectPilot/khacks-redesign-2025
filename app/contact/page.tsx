@@ -75,7 +75,7 @@ export default function ContactPage() {
                 <div className="h-3.5 w-3.5 rounded-full bg-green-500" />
               </div>
               <div className="flex-1">
-                <p className="text-center text-sm text-gray-400">contact_form_terminal</p>
+                <p className="text-center text-sm text-gray-400">kleinhacks_contact</p>
               </div>
             </div>
 
