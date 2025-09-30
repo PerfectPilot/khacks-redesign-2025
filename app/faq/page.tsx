@@ -126,11 +126,8 @@ export default function FAQPage() {
 
               {/* FAQ Content */}
               <div className="p-8">
-                {/* FAQ Title and Controls */}
+                {/* Controls */}
                 <div className="text-center mb-12">
-                  <h1 className="text-6xl font-bold text-white mb-6 tracking-wider">
-                    FAQ
-                  </h1>
                   <div className="flex justify-center gap-4">
                     <button
                       onClick={showAll}
