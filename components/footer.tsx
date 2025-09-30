@@ -13,6 +13,8 @@ export default function Footer() {
               href="https://www.instagram.com/kleinisdhacks/"
               aria-label="Instagram"
               className="group"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <span className="inline-flex items-center justify-center rounded-full bg-gray-800/70 p-2 transition-colors group-hover:bg-gray-700/70">
                 <Instagram className="h-5 w-5 text-gray-200 transition-colors group-hover:text-pink-300" />
@@ -22,6 +24,8 @@ export default function Footer() {
               href="https://x.com/klein_hacks"
               aria-label="Twitter"
               className="group"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <span className="inline-flex items-center justify-center rounded-full bg-gray-800/70 p-2 transition-colors group-hover:bg-gray-700/70">
                 <Twitter className="h-5 w-5 text-gray-200 transition-colors group-hover:text-sky-300" />
