@@ -1,52 +1,38 @@
 import Link from "next/link"
 import { Instagram, Twitter } from "lucide-react"
+import { NavBar } from "./nav-bar"
 
 export default function Footer() {
-  const navItems = [
-    { name: "Home", href: "/" },
-    { name: "Sponsors", href: "/sponsors" },
-    { name: "FAQ", href: "/faq" },
-    { name: "Contact", href: "/contact" },
-  ]
-
   return (
     <footer className="border-t border-gray-800/60 bg-[rgb(0,10,75)]">
-      <div className="mx-auto max-w-6xl px-6 py-6">
-        <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-          <nav aria-label="Footer Navigation">
-            <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-              {navItems.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="text-sm text-gray-300 transition-colors hover:text-blue-400"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <div className="flex items-center gap-4">
-            {/* Replace the href values below with your real profile URLs */}
+      <div className="mx-auto max-w-6xl px-6 py-8">
+        {/* Centered group: social icons above, navbar below */}
+        <div className="flex flex-col items-center justify-center gap-3">
+          <div className="flex items-center gap-3">
             <Link
               href="https://www.instagram.com/kleinisdhacks/"
               aria-label="Instagram"
-              className="text-gray-300 transition-colors hover:text-pink-400"
+              className="group"
             >
-              <Instagram className="h-5 w-5" />
+              <span className="inline-flex items-center justify-center rounded-full bg-gray-800/70 p-2 transition-colors group-hover:bg-gray-700/70">
+                <Instagram className="h-5 w-5 text-gray-200 transition-colors group-hover:text-pink-300" />
+              </span>
             </Link>
             <Link
               href="https://x.com/klein_hacks"
               aria-label="Twitter"
-              className="text-gray-300 transition-colors hover:text-sky-400"
+              className="group"
             >
-              <Twitter className="h-5 w-5" />
+              <span className="inline-flex items-center justify-center rounded-full bg-gray-800/70 p-2 transition-colors group-hover:bg-gray-700/70">
+                <Twitter className="h-5 w-5 text-gray-200 transition-colors group-hover:text-sky-300" />
+              </span>
             </Link>
           </div>
+
+          <NavBar />
         </div>
-        {/* Credits below nav/social row */}
+
+        {/* Credits */}
         <div className="mt-6 border-t border-gray-800/60 pt-4">
           <p className="text-center text-sm text-gray-200">
             Designed and Programmed by <span className="font-medium">Tanush Solai and Mehdi Benseddik</span>
