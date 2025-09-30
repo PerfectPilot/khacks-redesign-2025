@@ -12,7 +12,7 @@ export function NavBar() {
     { name: "Home", href: "/" },
     { name: "Sponsors", href: "/sponsors" },
     { name: "FAQ", href: "/faq" },
-    { name: "Contact Us", href: "/contact" },
+    { name: "Contact", href: "/contact" },
   ]
 
   useEffect(() => {
