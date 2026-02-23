@@ -43,16 +43,17 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen overflow-x-hidden">
-      {/* Background Image */}
+      {/* Background Image - fixed position div instead of background-attachment:fixed for Safari perf */}
       <div
-        className="absolute inset-0 z-0"
+        className="fixed inset-0 z-0"
         style={{
           backgroundImage:
             "url(https://hebbkx1anhila5yf.public.blob.vercel-storage.com/richard-horvath-_nWaeTF6qo0-unsplash.jpg-AMRNsw7JPQliDSHy9GNAEELhu9H3Fq.jpeg)",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundAttachment: "fixed",
           filter: "blur(10px) brightness(0.55)",
+          willChange: "transform",
+          transform: "translateZ(0)",
         }}
       />
 
@@ -80,7 +81,7 @@ export default function Home() {
         {/* Centered Terminal Window */}
         <div className="container mx-auto flex min-h-[calc(100vh-200px)] items-center justify-center px-4">
           <div className="w-full max-w-4xl">
-            <div className="overflow-hidden rounded-2xl border border-gray-700 bg-black/30 backdrop-blur-xl">
+            <div className="overflow-hidden rounded-2xl border border-gray-700 bg-black/30 backdrop-blur-xl" style={{ willChange: "transform", transform: "translateZ(0)" }}>
               {/* Terminal Header */}
               <div className="relative flex items-center border-b border-gray-700 bg-gray-900/50 px-6 py-4">
                 <div className="absolute left-6 flex gap-3">
@@ -140,7 +141,7 @@ export default function Home() {
         >
           <div className="grid gap-8 md:grid-cols-3">
             {/* Video Side */}
-            <div className="group md:col-span-2 overflow-hidden rounded-2xl border border-gray-700/50 bg-black/30 p-6 backdrop-blur-xl transition-all hover:bg-black/40 min-h-[360px] md:min-h-[440px] lg:min-h-[520px]">
+            <div className="group md:col-span-2 overflow-hidden rounded-2xl border border-gray-700/50 bg-black/30 p-6 backdrop-blur-xl transition-all hover:bg-black/40 min-h-[360px] md:min-h-[440px] lg:min-h-[520px]" style={{ willChange: "transform", transform: "translateZ(0)" }}>
               <video
                 className="h-full w-full rounded-lg object-cover shadow-2xl"
                 controls
@@ -153,7 +154,7 @@ export default function Home() {
             </div>
 
             {/* Info Side */}
-            <div className="md:col-span-1 flex flex-col rounded-2xl border border-gray-700/50 bg-black/30 p-8 backdrop-blur-xl transition-all hover:bg-black/40 min-h-[360px] md:min-h-[440px] lg:min-h-[520px]">
+            <div className="md:col-span-1 flex flex-col rounded-2xl border border-gray-700/50 bg-black/30 p-8 backdrop-blur-xl transition-all hover:bg-black/40 min-h-[360px] md:min-h-[440px] lg:min-h-[520px]" style={{ willChange: "transform", transform: "translateZ(0)" }}>
               <h2 className="text-center text-3xl font-bold text-white">Event Details</h2>
               <div className="flex flex-1 flex-col items-center justify-center space-y-4">
                 <p className="text-center text-xl text-gray-200">
