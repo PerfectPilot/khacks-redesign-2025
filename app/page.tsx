@@ -9,7 +9,7 @@ import { NavBar } from "@/components/nav-bar"
 export default function Home() {
   const [text, setText] = useState("")
   const [showButtons, setShowButtons] = useState(false)
-  const fullText = ">_ ~/kleinhacks $ Welcome to KleinHacks 2025!"
+  const fullText = ">_ ~/kleinhacks $ Welcome to KleinHacks 2026!"
   const infoSectionRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
