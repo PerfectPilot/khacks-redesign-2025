@@ -129,7 +129,7 @@ export default function ContactPage() {
               {status === "success" && (
                 <div className="mb-6 p-4 bg-green-500/10 border border-green-500/30 rounded-lg text-center">
                   <p className="text-green-400 font-medium">✓ Message sent successfully!</p>
-                  <p className="text-green-400/70 text-sm mt-1">We&apos;ll get back to you as soon as possible.</p>
+                  <p className="text-green-400/70 text-sm mt-1">We&apos;ll get back to you soon.</p>
                 </div>
               )}
 
