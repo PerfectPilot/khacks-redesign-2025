@@ -51,7 +51,7 @@ export async function POST(request: Request) {
         // Send email via Resend
         const { error } = await resend.emails.send({
             from: "KleinHacks Contact Form <onboarding@resend.dev>",
-            to: ["kleinhacks@kleinisd.net"],
+            to: ["gametube0112@gmail.com"],
             replyTo: email,
             subject: `[KleinHacks Contact] ${reasonLabel} — from ${name}`,
             html: `
