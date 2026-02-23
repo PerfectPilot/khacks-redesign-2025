@@ -4,23 +4,23 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname } from 'next/navigation'
 
+const navItems = [
+  { name: "Home", href: "/" },
+  { name: "Sponsors", href: "/sponsors" },
+  { name: "FAQ", href: "/faq" },
+  { name: "Contact", href: "/contact" },
+]
+
 export function NavBar() {
   const pathname = usePathname();
   const [activeItem, setActiveItem] = useState("home")
-
-  const navItems = [
-    { name: "Home", href: "/" },
-    { name: "Sponsors", href: "/sponsors" },
-    { name: "FAQ", href: "/faq" },
-    { name: "Contact", href: "/contact" },
-  ]
 
   useEffect(() => {
     const currentItem = navItems.find(item => item.href === pathname);
     if (currentItem) {
       setActiveItem(currentItem.name.toLowerCase());
     }
-  }, [pathname, navItems]);
+  }, [pathname]);
 
   return (
     <nav className="rounded-full border border-gray-700/50 bg-gray-900/30 px-8 py-2.5 backdrop-blur-md">
@@ -29,9 +29,8 @@ export function NavBar() {
           <li key={item.name}>
             <Link
               href={item.href}
-              className={`text-sm transition-colors hover:text-blue-400 ${
-                activeItem === item.name.toLowerCase() ? "text-blue-400" : "text-gray-300"
-              }`}
+              className={`text-sm transition-colors hover:text-blue-400 ${activeItem === item.name.toLowerCase() ? "text-blue-400" : "text-gray-300"
+                }`}
               onClick={() => setActiveItem(item.name.toLowerCase())}
             >
               {item.name}
