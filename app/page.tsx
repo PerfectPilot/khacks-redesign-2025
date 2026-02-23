@@ -61,7 +61,7 @@ export default function Home() {
       <div className="relative z-10">
         {/* Header with Logo and Nav */}
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-center gap-8 py-4">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-8 py-4">
             <Link href="/" aria-label="Home">
               <div className="w-[180px]">
                 <Image
@@ -107,7 +107,7 @@ export default function Home() {
                     ${showButtons ? 'translate-y-0 opacity-100 visible' : 'translate-y-4 opacity-0 invisible'}`}
                 >
                   <a
-                    href="https://docs.google.com/forms/d/e/1FAIpQLSdlDB2U7vB1SN-JkiOjv_eBb5S6hu5Xt-jK4p5B8H8lKYutsA/closedform"
+                    href="https://forms.gle/ujnBJ3riCmUpAUR18"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full"
