@@ -1,10 +1,11 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { NavBar } from "@/components/nav-bar"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
+import HCaptcha from "@hcaptcha/react-hcaptcha"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -13,6 +14,10 @@ export default function ContactPage() {
     inquiryReason: "",
     description: ""
   })
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null)
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
+  const [errorMessage, setErrorMessage] = useState("")
+  const captchaRef = useRef<HCaptcha>(null)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -22,10 +27,44 @@ export default function ContactPage() {
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log("Form submitted:", formData)
+
+    if (!captchaToken) {
+      setStatus("error")
+      setErrorMessage("Please complete the captcha verification.")
+      return
+    }
+
+    setStatus("loading")
+    setErrorMessage("")
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          captchaToken,
+        }),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        setStatus("error")
+        setErrorMessage(data.error || "Something went wrong. Please try again.")
+        return
+      }
+
+      setStatus("success")
+      setFormData({ name: "", email: "", inquiryReason: "", description: "" })
+      setCaptchaToken(null)
+      captchaRef.current?.resetCaptcha()
+    } catch {
+      setStatus("error")
+      setErrorMessage("Network error. Please check your connection and try again.")
+    }
   }
 
   return (
@@ -86,6 +125,21 @@ export default function ContactPage() {
                 <p className="text-gray-400">Get in touch with the KleinHacks team</p>
               </div>
 
+              {/* Success Message */}
+              {status === "success" && (
+                <div className="mb-6 p-4 bg-green-500/10 border border-green-500/30 rounded-lg text-center">
+                  <p className="text-green-400 font-medium">✓ Message sent successfully!</p>
+                  <p className="text-green-400/70 text-sm mt-1">We&apos;ll get back to you as soon as possible.</p>
+                </div>
+              )}
+
+              {/* Error Message */}
+              {status === "error" && errorMessage && (
+                <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-lg text-center">
+                  <p className="text-red-400 font-medium">{errorMessage}</p>
+                </div>
+              )}
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name Field */}
                 <div>
@@ -99,7 +153,8 @@ export default function ContactPage() {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    disabled={status === "loading"}
+                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent disabled:opacity-50"
                     placeholder="Enter your full name"
                   />
                 </div>
@@ -116,7 +171,8 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    disabled={status === "loading"}
+                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent disabled:opacity-50"
                     placeholder="Enter your email address"
                   />
                 </div>
@@ -132,7 +188,8 @@ export default function ContactPage() {
                     value={formData.inquiryReason}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    disabled={status === "loading"}
+                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent disabled:opacity-50"
                   >
                     <option value="" className="bg-gray-800">Select an option</option>
                     <option value="kleinhacks-question" className="bg-gray-800">KleinHacks question</option>
@@ -152,8 +209,26 @@ export default function ContactPage() {
                     onChange={handleInputChange}
                     required
                     rows={4}
-                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
+                    disabled={status === "loading"}
+                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none disabled:opacity-50"
                     placeholder="Please describe your inquiry in detail..."
+                  />
+                </div>
+
+                {/* hCaptcha Widget */}
+                <div className="flex justify-center">
+                  <HCaptcha
+                    ref={captchaRef}
+                    sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || ""}
+                    onVerify={(token) => {
+                      setCaptchaToken(token)
+                      if (status === "error" && errorMessage.includes("captcha")) {
+                        setStatus("idle")
+                        setErrorMessage("")
+                      }
+                    }}
+                    onExpire={() => setCaptchaToken(null)}
+                    theme="dark"
                   />
                 </div>
 
@@ -162,9 +237,20 @@ export default function ContactPage() {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-[70%] bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg transition-colors"
+                    disabled={status === "loading"}
+                    className="w-[70%] bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Send Message
+                    {status === "loading" ? (
+                      <span className="flex items-center justify-center gap-2">
+                        <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                        </svg>
+                        Sending...
+                      </span>
+                    ) : (
+                      "Send Message"
+                    )}
                   </Button>
                 </div>
               </form>

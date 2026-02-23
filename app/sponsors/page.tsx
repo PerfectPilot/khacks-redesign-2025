@@ -6,22 +6,16 @@ import { NavBar } from "@/components/nav-bar"
 import Link from "next/link"
 
 const images = [
-  "/images/sponsor1.jpeg", 
   "/images/sponsor2.jpeg",
   "/images/sponsor3.jpeg",
   "/images/sponsor4.jpeg",
-  "/images/sponsor5.jpeg",  
-  "/images/sponsor6.jpeg", 
+  "/images/sponsor5.jpeg",
+  "/images/sponsor6.jpeg",
   "/images/sponsor7.jpeg",
   "/images/sponsor8.jpeg",
-  "/images/sponsor9.jpeg",
-  "/images/sponsor10.jpeg",
-  "/images/sponsor11.jpeg",
   "/images/sponsor12.jpeg",
   "/images/sponsor13.jpeg",
   "/images/sponsor14.jpeg",
-  "/images/sponsor15.jpeg",
-  "/images/sponsor16.jpeg",
   "/images/sponsor17.jpeg",
   "/images/sponsor18.jpeg",
 ];

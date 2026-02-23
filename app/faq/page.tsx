@@ -22,44 +22,44 @@ export default function FAQPage() {
     },
     {
       question: "What is the schedule for the event?",
-      answer: "The KleinHacks 2025 Schedule will be posted soon! Check back closer to the event date for detailed timing and activities."
+      answer: "Schedule for 2026 KleinHacks will be available soon!"
     },
     {
       question: "Who can attend?",
-      answer: "All current Klein ISD high school students can attend our event. This includes students from Klein High School, Klein Cain High School, Klein Oak High School, Klein Forest High School, and Klein Collins High School."
+      answer: "All current Klein ISD high school students can attend KleinHacks!"
     },
     {
       question: "Do I need to know how to code?",
-      answer: "Nope! KleinHacks is a great place to learn how to code, but we will have challenges that require no coding at all! As long as you have a passion for creating, the resources we provide you along with the mentors available will get you on the right path!"
+      answer: "No coding experience is required! KleinHacks offers challenges for both coders and non-coders, and mentors and resources are provided to guide you along the way."
     }
   ]
 
   const rightColumnData: FAQItem[] = [
     {
       question: "What are the challenges and how many can I do?",
-      answer: "Our challenges won't be announced until the day of the event! A team can only make one project, but it can apply to as many challenges as you want!"
+      answer: "• Announced on event day\n• One project per team\n• Projects can apply to multiple challenges"
     },
     {
       question: "How do prizes work?",
-      answer: "There are two types of prizes:\n\nSponsored Challenges: The prizes and amount of winning teams for sponsored challenges is up to the discretion of the sponsor.\n\nGeneral Track: There will be three winning teams in the general track. They will have the choice of one of the three Grand Prizes, subject to availability. 1st place will pick first, followed by 2nd, and then 3rd place."
+      answer: "• Sponsored: At the discretion of the sponsor\n• General Track: Three grand prize winners (1st, 2nd, and 3rd place choice)"
     },
     {
       question: "How do teams work?",
-      answer: "Teams consist of a maximum of three participants. Prizes are awarded to every member of the team individually. You don't need to have a team, but having friends makes it more fun! There will be a team formation event at KleinHacks for those who don't have one."
+      answer: "• Maximum of 3 participants per team\n• Prizes awarded individually to each team member\n• Team formation help available onsite"
     }
   ]
 
   const toggleLeftItem = (index: number) => {
-    setLeftOpenItems(prev => 
-      prev.includes(index) 
+    setLeftOpenItems(prev =>
+      prev.includes(index)
         ? prev.filter(item => item !== index)
         : [...prev, index]
     )
   }
 
   const toggleRightItem = (index: number) => {
-    setRightOpenItems(prev => 
-      prev.includes(index) 
+    setRightOpenItems(prev =>
+      prev.includes(index)
         ? prev.filter(item => item !== index)
         : [...prev, index]
     )
@@ -165,9 +165,8 @@ export default function FAQPage() {
                           </h3>
                           <div className="flex-shrink-0">
                             <svg
-                              className={`h-5 w-5 text-white transition-transform duration-300 ${
-                                leftOpenItems.includes(index) ? 'rotate-180' : ''
-                              }`}
+                              className={`h-5 w-5 text-white transition-transform duration-300 ${leftOpenItems.includes(index) ? 'rotate-180' : ''
+                                }`}
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
@@ -184,11 +183,10 @@ export default function FAQPage() {
 
                         {/* Answer */}
                         <div
-                          className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                            leftOpenItems.includes(index) 
-                              ? 'max-h-96 opacity-100 mt-4' 
-                              : 'max-h-0 opacity-0'
-                          }`}
+                          className={`overflow-hidden transition-all duration-300 ease-in-out ${leftOpenItems.includes(index)
+                            ? 'max-h-96 opacity-100 mt-4'
+                            : 'max-h-0 opacity-0'
+                            }`}
                         >
                           <p className="text-gray-300 leading-relaxed whitespace-pre-line">
                             {item.answer}
@@ -213,9 +211,8 @@ export default function FAQPage() {
                           </h3>
                           <div className="flex-shrink-0">
                             <svg
-                              className={`h-5 w-5 text-white transition-transform duration-300 ${
-                                rightOpenItems.includes(index) ? 'rotate-180' : ''
-                              }`}
+                              className={`h-5 w-5 text-white transition-transform duration-300 ${rightOpenItems.includes(index) ? 'rotate-180' : ''
+                                }`}
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
@@ -232,11 +229,10 @@ export default function FAQPage() {
 
                         {/* Answer */}
                         <div
-                          className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                            rightOpenItems.includes(index) 
-                              ? 'max-h-96 opacity-100 mt-4' 
-                              : 'max-h-0 opacity-0'
-                          }`}
+                          className={`overflow-hidden transition-all duration-300 ease-in-out ${rightOpenItems.includes(index)
+                            ? 'max-h-96 opacity-100 mt-4'
+                            : 'max-h-0 opacity-0'
+                            }`}
                         >
                           <p className="text-gray-300 leading-relaxed whitespace-pre-line">
                             {item.answer}

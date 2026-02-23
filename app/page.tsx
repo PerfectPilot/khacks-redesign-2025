@@ -101,7 +101,7 @@ export default function Home() {
                   <span className="animate-pulse text-green-400">|</span>
                 </div>
 
-                <div 
+                <div
                   className={`flex w-full max-w-[280px] flex-col items-center gap-4 transition-all duration-1000
                     ${showButtons ? 'translate-y-0 opacity-100 visible' : 'translate-y-4 opacity-0 invisible'}`}
                 >
@@ -134,14 +134,14 @@ export default function Home() {
         </div>
 
         {/* Info Section */}
-        <div 
-          ref={infoSectionRef} 
+        <div
+          ref={infoSectionRef}
           className="container mx-auto px-4 py-32"
         >
           <div className="grid gap-8 md:grid-cols-3">
             {/* Video Side */}
             <div className="group md:col-span-2 overflow-hidden rounded-2xl border border-gray-700/50 bg-black/30 p-6 backdrop-blur-xl transition-all hover:bg-black/40 min-h-[360px] md:min-h-[440px] lg:min-h-[520px]">
-              <video 
+              <video
                 className="h-full w-full rounded-lg object-cover shadow-2xl"
                 controls
                 autoPlay
@@ -157,12 +157,12 @@ export default function Home() {
               <h2 className="text-center text-3xl font-bold text-white">Event Details</h2>
               <div className="flex flex-1 flex-col items-center justify-center space-y-4">
                 <p className="text-center text-xl text-gray-200">
-                  <span className="block font-semibold text-gray-400">Date</span>
-                  February 21, 2026
+                  <span className="block font-semibold text-gray-400">Date and Time</span>
+                  February 28, 2026 <br></br> From 9:00 AM - 8:00 PM
                 </p>
                 <p className="text-center text-xl text-gray-200">
                   <span className="block font-semibold text-gray-400">Location</span>
-                  Klein Cain High School <br></br> <br></br> 10201 Spring Cypress Rd Klein, TX 77070 United States
+                  Klein Collins High School <br></br> <br></br> 20811 Ella Blvd, Spring, TX 77388
                 </p>
               </div>
             </div>
